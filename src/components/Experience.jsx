@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { ChevronDown, MapPin } from 'lucide-react'
+import { ChevronDown, MapPin, FileDown, Maximize2 } from 'lucide-react'
 import Section from './Section'
 import { EXPERIENCE } from '../data'
 
@@ -85,6 +85,7 @@ export default function Experience({ lens }) {
                     {e.caseStudy && (
                       <CaseStudy
                         data={e.caseStudy}
+                        poster={e.poster}
                         isOpen={caseStudyOpen === e.id}
                         onToggle={() =>
                           setCaseStudyOpen(caseStudyOpen === e.id ? null : e.id)
@@ -102,7 +103,7 @@ export default function Experience({ lens }) {
   )
 }
 
-function CaseStudy({ data, isOpen, onToggle }) {
+function CaseStudy({ data, poster, isOpen, onToggle }) {
   return (
     <div className="mt-4">
       <button
@@ -170,8 +171,48 @@ function CaseStudy({ data, isOpen, onToggle }) {
                 ))}
               </div>
             </div>
+
+            {poster && <PosterViewer src={poster} />}
           </div>
         </div>
+      </div>
+    </div>
+  )
+}
+
+function PosterViewer({ src }) {
+  return (
+    <div>
+      <div className="flex items-center justify-between gap-3 mb-2">
+        <p className="text-xs font-semibold uppercase tracking-wide text-accent2">Project poster</p>
+        <div className="flex items-center gap-3">
+          <a
+            href={src}
+            target="_blank"
+            rel="noreferrer"
+            className="inline-flex items-center gap-1 text-xs font-medium text-soft hover:text-accent transition"
+          >
+            <Maximize2 size={12} /> Open full view
+          </a>
+          <a
+            href={src}
+            download
+            className="inline-flex items-center gap-1 text-xs font-medium text-soft hover:text-accent transition"
+          >
+            <FileDown size={12} /> Download PDF
+          </a>
+        </div>
+      </div>
+      <div className="rounded-lg border border-edge overflow-hidden bg-panel">
+        <object data={src} type="application/pdf" className="w-full h-[70vh]">
+          <div className="p-6 text-center text-sm text-soft">
+            Your browser can't preview PDFs inline.{' '}
+            <a href={src} target="_blank" rel="noreferrer" className="text-accent underline">
+              Open the poster in a new tab
+            </a>{' '}
+            instead.
+          </div>
+        </object>
       </div>
     </div>
   )

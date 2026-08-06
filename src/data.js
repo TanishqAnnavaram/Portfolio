@@ -91,13 +91,14 @@ export const EXPERIENCE = [
     weight: { software: 2, data: 5 },
     tags: ['PyTorch', 'Transformers', 'RGB-D', 'Robotics', 'Python'],
     bullets: [
-      'Developed a transformer-based next-state prediction framework for robotic manipulation, extending prior DIPN work on multi-object push interaction modeling.',
-      'Built object-centric learning pipelines using RGB-D inputs, simulation data, and structured object representations to model how pushes propagate across multiple objects in clutter.',
-      'Supporting experimental analysis through attention-map visualization, trajectory analysis, and IoU / manipulation-efficiency evaluation within a broader robotic manipulation pipeline.',
+      'Redesigned a core model component — replacing hand-coded pairwise aggregation with a Transformer self-attention architecture — cutting prediction error by 29.5%, with the largest gains on the hardest inputs (7–9 interacting objects), showing the approach scaled where it mattered most.',
+      'Designed and trained a Diffusion-Transformer (DiT) as a production-ready model upgrade, engineering it as a drop-in replacement that preserved compatibility with existing data pipelines and inference contracts — prioritizing integration alongside raw performance.',
+      'Built a standardized evaluation pipeline benchmarking 4 model architectures across 22 test cases, isolating how model-level accuracy gains translated into downstream task performance — turning a single metric into a repeatable, defensible comparison framework.',
     ],
     proof: [
       { label: 'Research area: DIPN / push interaction', type: 'note' },
     ],
+    poster: '/files/RAD_Poster_TanishqAnnavaram.pdf',
     caseStudy: {
       overview:
         'DIPN (Deep Interaction Prediction Network) plans push-and-grasp actions for retrieving objects from cluttered scenes. Its core weakness: a hand-coded pairwise aggregation module for modeling object-to-object interactions, which scaled poorly as scene complexity grew. This project replaced that module with modern attention-based architectures and validated the results on a physical robot.',
