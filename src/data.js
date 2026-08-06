@@ -24,7 +24,7 @@ export const PROFILE = {
   email: 'tra53@scarletmail.rutgers.edu',
   altEmail: 'tanishqreddy101@gmail.com',
   phone: '848-313-9205',
-  github: 'https://github.com/Tanishq111111111',
+  github: 'https://github.com/TanishqAnnavaram',
   linkedin: 'https://www.linkedin.com/in/tanishq-annavaram-86a139227',
   // Per-lens resume files (drop the PDFs into /public/resumes/)
   resume: {
@@ -98,6 +98,42 @@ export const EXPERIENCE = [
     proof: [
       { label: 'Research area: DIPN / push interaction', type: 'note' },
     ],
+    caseStudy: {
+      overview:
+        'DIPN (Deep Interaction Prediction Network) plans push-and-grasp actions for retrieving objects from cluttered scenes. Its core weakness: a hand-coded pairwise aggregation module for modeling object-to-object interactions, which scaled poorly as scene complexity grew. This project replaced that module with modern attention-based architectures and validated the results on a physical robot.',
+      problem:
+        'Hand-coded aggregation treats every pair of objects with the same fixed logic, regardless of scene complexity. In cluttered scenes with many interacting objects, this produced degraded prediction accuracy — exactly the cases where good interaction modeling matters most.',
+      approach: [
+        {
+          title: 'Transformer redesign',
+          text: 'Replaced pairwise aggregation with an object-token self-attention Transformer, letting the model learn which object relationships matter instead of hard-coding them.',
+        },
+        {
+          title: 'Diffusion Transformer (DiT)',
+          text: 'Designed and trained a DiT as a further upgrade, engineered as a drop-in replacement — preserving compatibility with existing data pipelines and downstream inference contracts rather than requiring a system rewrite.',
+        },
+        {
+          title: 'Evaluation pipeline',
+          text: 'Built a standardized benchmark comparing 4 model configurations (baseline MLP, Transformer, DiT, and an intermediate variant) across 22 test cases, isolating how gains in raw prediction accuracy translated into actual task success.',
+        },
+        {
+          title: 'Real-robot validation',
+          text: 'Extended the work beyond simulation — calibrated eye-to-hand vision on a physical setup (UR5e arm, Robotiq 2F-85 gripper, RealSense D415 camera) to mean 2.9mm accuracy, then ran the models on real grasp-and-retrieval trials.',
+        },
+      ],
+      results: [
+        '29.5% reduction in interaction-prediction error over the original aggregation module, with the largest gains on the hardest scenes (7–9 interacting objects).',
+        'Retrieval success rate on the 22-case benchmark improved substantially, from ~17% to ~68% to ~73% across the MLP → Transformer → DiT progression.',
+        'Demonstrated that accuracy gains at the model level reliably compounded into downstream task performance, not just isolated benchmark metrics.',
+      ],
+      skills: [
+        'Transformer & diffusion model architecture design',
+        'experimental design and benchmarking rigor',
+        'backward-compatible systems engineering',
+        'robotics hardware integration (manipulator + gripper + vision calibration)',
+        'translating research results into deployable, production-minded systems',
+      ],
+    },
   },
   {
     id: 'cait',
@@ -149,7 +185,7 @@ export const PROJECTS = [
       'Added OpenTelemetry, Prometheus, and Grafana dashboards, and validated cross-service flows with Testcontainers against real infrastructure dependencies.',
     ],
     links: [
-      { label: 'GitHub', href: 'https://github.com/Tanishq111111111', type: 'github' },
+      { label: 'GitHub', href: 'https://github.com/TanishqAnnavaram', type: 'github' },
     ],
   },
   {
@@ -166,7 +202,7 @@ export const PROJECTS = [
       'Created dashboard-ready outputs and error-analysis reports showing retrieval grounding improved factual QA reliability by 40%, and identified 400 key failure modes via a structured taxonomy.',
     ],
     links: [
-      { label: 'GitHub', href: 'https://github.com/Tanishq111111111', type: 'github' },
+      { label: 'GitHub', href: 'https://github.com/TanishqAnnavaram', type: 'github' },
     ],
   },
   {
@@ -183,7 +219,7 @@ export const PROJECTS = [
       'Built and documented RESTful APIs in Express.js with MongoDB, improving response efficiency by 40%.',
     ],
     links: [
-      { label: 'GitHub', href: 'https://github.com/Tanishq111111111', type: 'github' },
+      { label: 'GitHub', href: 'https://github.com/TanishqAnnavaram', type: 'github' },
     ],
   },
 ]
